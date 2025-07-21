@@ -906,9 +906,9 @@ body {
 
 /* Amélioration pour les écrans tactiles */
 @media (hover: none) and (pointer: coarse) {
-    .game-card:hover {
+    /* .game-card:hover {
         transform: none;
-    }
+    } */
     
     .game-card:active {
         transform: translateY(-5px) scale(1.02);
@@ -935,11 +935,7 @@ body {
         display: none;
     }
 
-    /* Améliorer la visibilité des overlay sur mobile */
-    .card-overlay {
-        opacity: 0.8;
-        background: rgba(0, 0, 0, 0.9);
-    }
+
 }
 
 /* Print styles */

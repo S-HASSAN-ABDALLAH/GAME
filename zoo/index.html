@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaux Virtuels - Classes JavaScript</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+ 
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+ 
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+ 
+        .section {
+            margin: 25px 0;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: #f8fafc;
+        }
+ 
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+ 
+        button {
+            padding: 10px 20px;
+            background: #4299e1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+ 
+        button:hover {
+            background: #3182ce;
+        }
+ 
+        button:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+        }
+ 
+        input,
+        select {
+            padding: 8px;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+ 
+        .animal-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .animal-emoji {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+ 
+        .stat-bar {
+            background: #e2e8f0;
+            height: 20px;
+            border-radius: 10px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+ 
+        .stat-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+ 
+        .energy {
+            background: #48bb78;
+        }
+ 
+        .happiness {
+            background: #ed8936;
+        }
+ 
+        .health {
+            background: #e53e3e;
+        }
+ 
+        .highlight {
+            background: #fef5e7;
+            padding: 15px;
+            border-left: 4px solid #ed8936;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div class="container">
+        <a href="/index.html">Home</a>
+        <h1>🐾 Animaux Virtuels</h1>
+ 
+        <div class="section">
+            <h2>🎮 Créer et manipuler vos animaux</h2>
+ 
+            <div class="controls">
+                <input type="text" id="animalName" placeholder="Nom de l'animal" value="Fluffy">
+                <select id="animalType">
+                    <option value="chat">Chat 🐱</option>
+                    <option value="chien">Chien 🐶</option>
+                    <option value="lapin">Lapin 🐰</option>
+                    <option value="hamster">Hamster 🐹</option>
+                    <option value="oiseau">Oiseau 🐦</option>
+                    <option value="tortue">Tortue 🐢</option>
+                    <option value="poisson">Poisson 🐠</option>
+                    <option value="souris">Souris 🐭</option>
+                </select>
+                <button onclick="creerAnimal()">Créer un Animal</button>
+                <button onclick="supprimerTous()">Supprimer Tous</button>
+            </div>
+ 
+            <div class="highlight">
+                <strong>Instructions :</strong>
+                1. Créez des animaux avec différents noms<br>
+                2. Interagissez avec eux en cliquant sur les boutons<br>
+                3. Observez comment les propriétés changent<br>
+                4. Amusez-vous bien avec vos compagnons virtuels !
+            </div>
+        </div>
+ 
+        <div class="section">
+            <h2>🐾 Mes Animaux Virtuels</h2>
+            <div id="animalsContainer"></div>
+        </div>
+    </div>
+ 
+    <script>
+        // Définition de la classe Animal
+        class Animal {
+            constructor(nom, type, emoji) {
+                this.nom = nom;
+                this.type = type;
+                this.emoji = emoji;
+                this.energie = 100;
+                this.bonheur = 100;
+                this.sante = 100;
+                this.age = 0;
+            }
+ 
+            manger() {
+                this.energie = Math.min(100, this.energie + 20);
+                this.bonheur = Math.min(100, this.bonheur + 10);
+ 
+            }
+ 
+            jouer() {
+                this.energie = Math.max(0, this.energie - 15);
+                this.bonheur = Math.min(100, this.bonheur + 25);
+ 
+            }
+ 
+            dormir() {
+                this.energie = Math.min(100, this.energie + 30);
+                this.sante = Math.min(100, this.sante + 10);
+ 
+            }
+ 
+            vieillir() {
+                this.age++;
+                this.sante = Math.max(0, this.sante - 5);
+                // this.bonheur = Math.min(100, this.bonheur);
+ 
+            }
+ 
+            getInfo() {
+                return `${this.nom} (${this.type}) - Âge: ${this.age} - Énergie: ${this.energie}% - Bonheur: ${this.bonheur}% - Santé: ${this.sante}%`;
+            }
+        }
+ 
+        // Tableau pour stocker nos instances d'animaux
+        let animaux = [];
+ 
+        // Mapping des types d'animaux vers leurs emojis
+        const animalEmojis = {
+            'chat': '🐱',
+            'chien': '🐶',
+            'lapin': '🐰',
+            'hamster': '🐹',
+            'oiseau': '🐦',
+            'tortue': '🐢',
+            'poisson': '🐠',
+            'souris': '🐭',
+        };
+ 
+        // Fonction pour créer un nouvel animal
+        function creerAnimal() {
+            const nom = document.getElementById('animalName').value;
+            const type = document.getElementById('animalType').value;
+            const emoji = animalEmojis[type];
+ 
+            if (!nom) {
+                alert('Veuillez entrer un nom pour l\'animal !');
+                return;
+            }
+ 
+            // Création d'une nouvelle instance de la classe Animal
+            const nouvelAnimal = new Animal(nom, type, emoji);
+            animaux.push(nouvelAnimal);
+ 
+            // Réinitialiser le nom pour le prochain animal
+            document.getElementById('animalName').value = '';
+ 
+            afficherAnimaux();
+        }
+ 
+        // Fonction pour afficher tous les animaux
+        function afficherAnimaux() {
+            const container = document.getElementById('animalsContainer');
+            container.innerHTML = '';
+ 
+            animaux.forEach((animal, index) => {
+                const animalCard = document.createElement('div');
+                animalCard.className = 'animal-card';
+                animalCard.innerHTML = `
+                    <div class="animal-emoji">${animal.emoji}</div>
+                    <h3>${animal.nom}</h3>
+                    <p>${animal.type.charAt(0).toUpperCase() + animal.type.slice(1)} • ${animal.age} an(s)</p>
+                   
+                    <div>
+                        <small>Énergie: ${animal.energie}%</small>
+                        <div class="stat-bar">
+                            <div class="stat-fill energy" style="width: ${animal.energie}%"></div>
+                        </div>
+                    </div>
+                   
+                    <div>
+                        <small>Bonheur: ${animal.bonheur}%</small>
+                        <div class="stat-bar">
+                            <div class="stat-fill happiness" style="width: ${animal.bonheur}%"></div>
+                        </div>
+                    </div>
+                   
+                    <div>
+                        <small>Santé: ${animal.sante}%</small>
+                        <div class="stat-bar">
+                            <div class="stat-fill health" style="width: ${animal.sante}%"></div>
+                        </div>
+                    </div>
+                   
+                    <div class="controls">
+                        <button onclick="actionAnimal(${index}, 'manger')">🍎 Manger</button>
+                        <button onclick="actionAnimal(${index}, 'jouer')">🎮 Jouer</button>
+                        <button onclick="actionAnimal(${index}, 'dormir')">😴 Dormir</button>
+                        <button onclick="actionAnimal(${index}, 'vieillir')">⏰ Vieillir</button>
+                    </div>
+                   
+                    <button onclick="supprimerAnimal(${index})" style="background: #e53e3e; margin-top: 10px;">❌ Supprimer</button>
+                `;
+                container.appendChild(animalCard);
+            });
+ 
+            if (animaux.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666;">Aucun animal créé. Créez votre premier animal ci-dessus !</p>';
+            }
+        }
+ 
+        // Fonction pour exécuter une action sur un animal
+        function actionAnimal(index, action) {
+            const animal = animaux[index];
+ 
+            switch (action) {
+                case 'manger':
+                    animal.manger();
+                    break;
+                case 'jouer':
+                    animal.jouer();
+                    break;
+                case 'dormir':
+                    animal.dormir();
+                    break;
+                case 'vieillir':
+                    animal.vieillir();
+                    break;
+            }
+ 
+            afficherAnimaux();
+        }
+ 
+        // Fonction pour supprimer un animal
+        function supprimerAnimal(index) {
+            animaux.splice(index, 1);
+            afficherAnimaux();
+        }
+ 
+        // Fonction pour supprimer tous les animaux
+        function supprimerTous() {
+            if (animaux.length === 0) return;
+ 
+            animaux = [];
+            afficherAnimaux();
+        }
+ 
+        // Initialisation avec un animal d'exemple
+        window.onload = function () {
+            // Créer un animal d'exemple
+            const animalExemple = new Animal('Miaou', 'chat', '🐱');
+            animaux.push(animalExemple);
+ 
+            afficherAnimaux();
+        };
+    </script>
+</body>
+ 
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du Pendu Simple</title>
+    <!-- 🔗 ربط ملف CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Jeu du Pendu</h1>
+        
+        <div id="mot" class="mot">_ _ _ _</div>
+        
+        <div>
+            <input type="text" id="lettre" maxlength="1" placeholder="?" 
+                   onkeypress="if(event.key==='Enter') jouer()">
+            <button onclick="jouer()">Jouer</button>
+        </div>
+        
+        <div class="erreurs">Erreurs: <span id="erreurs">0</span>/6</div>
+        
+        <div id="message" class="message">Devinez le mot en proposant des lettres !</div>
+        
+        <div class="pendu">
+            <svg width="150" height="200">
+                <line x1="10" y1="180" x2="140" y2="180" stroke="brown" stroke-width="4" />
+                <line x1="50" y1="180" x2="50" y2="20" stroke="brown" stroke-width="4" />
+                <line x1="50" y1="20" x2="100" y2="20" stroke="brown" stroke-width="4" />
+                
+                <line x1="100" y1="20" x2="100" y2="40" stroke="black" stroke-width="3" class="partie" />
+                <circle cx="100" cy="50" r="10" stroke="black" stroke-width="3" fill="none" class="partie" />
+                <line x1="100" y1="60" x2="100" y2="100" stroke="black" stroke-width="3" class="partie" />
+                <line x1="100" y1="70" x2="80" y2="90" stroke="black" stroke-width="3" class="partie" />
+                <line x1="100" y1="70" x2="120" y2="90" stroke="black" stroke-width="3" class="partie" />
+                <line x1="100" y1="100" x2="80" y2="130" stroke="black" stroke-width="3" class="partie" />
+                <line x1="100" y1="100" x2="120" y2="130" stroke="black" stroke-width="3" class="partie" />
+            </svg>
+        </div>
+        
+        <div class="lettres">
+            Lettres essayées:
+            <div id="liste" class="liste">Aucune</div>
+        </div>
+        
+        <button onclick="recommencer()">🔄 Recommencer</button>
+    </div>
+
+    <!-- 🔗 ربط ملف JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
