@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Retro Games Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-text">🎮 LOADING...</div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="logo">🎮 MY RETRO GAMES</div>
+        <nav class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#games">Games</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>👋 WELCOME TO MY RETRO GAMES</h1>
+            <p>Discover amazing retro-style games built with cutting-edge web technologies</p>
+            <a href="#games" class="cta-btn">🚀 EXPLORE GAMES</a>
+        </div>
+        <div class="hero-bg-animation"></div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games" id="games">
+        <div class="container">
+            <h2>🕹️ MY GAMES COLLECTION</h2>
+            <div class="game-grid">
+                <div class="game-card" data-game="pendu">
+                    <div class="card-image">
+                        <img src="./images/Hangman-thumbnail.webp" alt="Pendu" />
+                        <div class="card-overlay">
+                            <div class="card-info">
+                                <p>Classic word guessing game with modern twist</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>PENDU</h3>
+                        <a href="../Pendu/index.html" class="play-btn">🎯 PLAY NOW</a>
+                    </div>
+                </div>
+
+                <div class="game-card" data-game="nurse">
+                    <div class="card-image">
+                        <img src="./images/pet_nurse-thumbnail.webp" alt="Pet Nurse" />
+                        <div class="card-overlay">
+                            <div class="card-info">
+                                <p>Take care of cute pets in this caring simulation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>PET NURSE</h3>
+                        <a href="../Animaux/index.html" class="play-btn">🐾 PLAY NOW</a>
+                    </div>
+                </div>
+
+                <div class="game-card" data-game="snake">
+                    <div class="card-image">
+                        <img src="./images/snake-thumbnail.webp" alt="Snake" />
+                        <div class="card-overlay">
+                            <div class="card-info">
+                                <p>Classic snake game with neon graphics</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>SNAKE</h3>
+                        <a href="snake/index.html" class="play-btn">🐍 PLAY NOW</a>
+                    </div>
+                </div>
+
+                <div class="game-card coming-soon" data-game="space">
+                    <div class="card-image">
+                        <img src="./images/commingsoon3.webp" alt="Coming Soon" />
+                        <div class="card-overlay">
+                            <div class="card-info">
+                                <p>Defend Earth from alien invasion</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>SPACE INVADER</h3>
+                        <span class="soon-label">🚧 COMING SOON</span>
+                    </div>
+                </div>
+
+                <div class="game-card coming-soon" data-game="tetris">
+                    <div class="card-image">
+                        <img src="./images/commingsoon2.webp" alt="Coming Soon" />
+                        <div class="card-overlay">
+                            <div class="card-info">
+                                <p>Classic puzzle game with modern effects</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>TETRIS</h3>
+                        <span class="soon-label">🚧 COMING SOON</span>
+                    </div>
+                </div>
+
+                <div class="game-card coming-soon" data-game="heroes">
+                    <div class="card-image">
+                        <img src="./images/commingsoon.webp" alt="Coming Soon" />
+                        <div class="card-overlay">
+                            <div class="card-info">
+                                <p>Epic adventure with retro heroes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>HEROES</h3>
+                        <span class="soon-label">🚧 COMING SOON</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>⚡ ABOUT THE DEVELOPER</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to my digital arcade! I'm a passionate web developer who loves creating immersive retro gaming experiences using modern web technologies. Each game is crafted with attention to detail, combining nostalgic gameplay with cutting-edge performance.</p>
+                    <p>My mission is to bring back the golden age of gaming while leveraging today's powerful web capabilities. From classic arcade games to innovative new concepts, every project is a labor of love.</p>
+                </div>
+                <div class="skills">
+                    <h3>🛠️ TECH STACK</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">github</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>📡 GET IN TOUCH</h2>
+            <p>Ready to collaborate or just want to chat about retro gaming?</p>
+            <div class="contact-links">
+                <a href="tel:+33123456789" class="contact-link">
+                    <i class="fas fa-phone"></i>
+                    <span>+33 1 23 45 67 89</span>
+                </a>
+                <a href="shadah.hassan.abdallah@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>shadah.hassan.abdallah@gmail.com</span>
+                </a>
+                <a href="https://github.com/S-HASSAN-ABDALLAH" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i>
+                    <span>https://github.com/S-HASSAN-ABDALLAH</span>
+                </a>
+                <a href="https://linkedin.com/in/shadah-developpeuse" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i>
+                    <span>https://linkedin.com/in/shadah-developpeuse</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to top" aria-label="Back to top">
+        <i class="fas fa-rocket"></i>
+    </button>
+
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="floating-element" style="--delay: 0s; --duration: 15s;"></div>
+        <div class="floating-element" style="--delay: 5s; --duration: 20s;"></div>
+        <div class="floating-element" style="--delay: 10s; --duration: 18s;"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
